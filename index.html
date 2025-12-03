@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Great Ghoul Duel – Fan Clone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="ui">
+    <div id="scoreboard">
+      <div class="team team-green">
+        Green Team: <span id="scoreGreen">0</span>
+      </div>
+      <div id="timer">02:00</div>
+      <div class="team team-purple">
+        Purple Team: <span id="scorePurple">0</span>
+      </div>
+    </div>
+    <div id="hint">
+      Move with <b>Arrow keys</b>. Collect spirit flames. Bring them to your team’s base. Steal enemy tails!
+    </div>
+  </div>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="overlay" class="hidden">
+    <div id="overlayContent">
+      <h1>Game Over</h1>
+      <p id="resultText"></p>
+      <button id="restartBtn">Play Again</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
