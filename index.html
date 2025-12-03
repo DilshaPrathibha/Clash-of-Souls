@@ -2,22 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Great Ghoul Duel – Fan Clone</title>
+  <title>Great Ghoul Duel – Enhanced Edition</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="ui">
     <div id="scoreboard">
       <div class="team team-green">
+        <span class="team-icon">👻</span>
         Green Team: <span id="scoreGreen">0</span>
       </div>
       <div id="timer">02:00</div>
       <div class="team team-purple">
+        <span class="team-icon">👻</span>
         Purple Team: <span id="scorePurple">0</span>
       </div>
     </div>
+    
+    <div id="game-info">
+      <div id="map-indicator">
+        <span id="current-map">Classic Graveyard</span>
+        <button id="map-switch" class="small-btn">Switch Map</button>
+      </div>
+      <div id="power-up-status">
+        <div id="active-powerups"></div>
+      </div>
+    </div>
+    
     <div id="hint">
-      Move with <b>Arrow keys</b>. Collect spirit flames. Bring them to your team’s base. Steal enemy tails!
+      Move with <b>Arrow keys</b>. Collect spirit flames and bring them to your base. 
+      <br>Steal enemy tails! Collect power-ups for special abilities!
     </div>
   </div>
 
@@ -25,9 +39,56 @@
 
   <div id="overlay" class="hidden">
     <div id="overlayContent">
-      <h1>Game Over</h1>
+      <h1 id="overlay-title">Game Over</h1>
       <p id="resultText"></p>
+      <div id="stats-summary">
+        <div>Flames Collected: <span id="final-flames">0</span></div>
+        <div>Total Score: <span id="final-score">0</span></div>
+      </div>
       <button id="restartBtn">Play Again</button>
+      <button id="characterBtn">Customize</button>
+    </div>
+  </div>
+
+  <div id="character-selection" class="hidden">
+    <div id="character-panel">
+      <h2>🎭 Character Customization</h2>
+      <div id="character-preview">
+        <div id="preview-ghost">👻</div>
+        <div id="preview-hat">🎃</div>
+      </div>
+      
+      <div class="selection-section">
+        <h3>Ghost Type</h3>
+        <div id="ghost-types">
+          <button class="ghost-type selected" data-type="0">Classic</button>
+          <button class="ghost-type" data-type="1">Bright</button>
+          <button class="ghost-type" data-type="2">Pastel</button>
+          <button class="ghost-type" data-type="3">Mystic</button>
+        </div>
+      </div>
+      
+      <div class="selection-section">
+        <h3>Achievement Hats</h3>
+        <div id="hat-collection">
+          <button class="hat-option selected" data-hat="">None</button>
+        </div>
+      </div>
+      
+      <div class="selection-section">
+        <h3>📊 Your Progress</h3>
+        <div id="achievement-progress">
+          <div>🔥 Flames Collected: <span id="total-flames">0</span></div>
+          <div>🎮 Games Played: <span id="total-games">0</span></div>
+          <div>⭐ Total Score: <span id="total-score-display">0</span></div>
+          <div>💫 Power-ups Used: <span id="total-powerups">0</span></div>
+        </div>
+      </div>
+      
+      <div class="panel-buttons">
+        <button id="apply-character">Apply & Play</button>
+        <button id="cancel-character">Cancel</button>
+      </div>
     </div>
   </div>
 
