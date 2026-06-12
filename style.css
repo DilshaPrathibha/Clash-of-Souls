@@ -83,7 +83,19 @@ body {
   border: 2px solid rgba(255,255,255,0.1);
   box-shadow: 0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07);
   position: relative;
+  transition: box-shadow 0.6s ease, border-color 0.6s ease;
 }
+
+#tug-bar.winning-green {
+  border-color: rgba(0,255,130,0.5);
+  box-shadow: 0 0 18px rgba(0,255,130,0.45), 0 0 40px rgba(0,255,130,0.15), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+
+#tug-bar.winning-purple {
+  border-color: rgba(180,90,255,0.5);
+  box-shadow: 0 0 18px rgba(180,90,255,0.45), 0 0 40px rgba(180,90,255,0.15), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+
 
 /* Green fill — grows from left */
 #bar-green {

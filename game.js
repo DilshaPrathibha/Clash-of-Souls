@@ -1359,12 +1359,16 @@ function update() {
 
   // Winning team indicator
   const timerEl2 = document.getElementById('timer');
+  const tugBar = document.getElementById('tug-bar');
   const greenSide = document.querySelector('.team-side-green');
   const purpleSide = document.querySelector('.team-side-purple');
   timerEl2.classList.toggle('winning-green',  greenPct > 50);
   timerEl2.classList.toggle('winning-purple', purplePct > 50);
+  tugBar.classList.toggle('winning-green',  greenPct > 50);
+  tugBar.classList.toggle('winning-purple', purplePct > 50);
   greenSide.classList.toggle('is-winning',  greenPct > 50);
   purpleSide.classList.toggle('is-winning', purplePct > 50);
+
 
 
 
