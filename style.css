@@ -118,37 +118,30 @@ body {
 /* Center timer — sits above the bar row */
 #timer-row {
   text-align: center;
-  margin-bottom: 4px;
+  margin-top: 4px;
+  margin-bottom: 2px;
 }
 
 #timer {
   display: inline-block;
-  font-size: 15px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  color: #fff;
-  background: linear-gradient(180deg, #2a1154 0%, #120830 100%);
-  border: 2px solid rgba(160,110,255,0.7);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.55);
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 999px;
-  padding: 3px 18px;
-  box-shadow: 0 0 14px rgba(140,90,255,0.5), 0 2px 6px rgba(0,0,0,0.6);
-  text-shadow: 0 0 10px rgba(200,160,255,0.9);
-  transition: border-color 0.6s ease, box-shadow 0.6s ease, text-shadow 0.6s ease;
+  padding: 2px 14px;
 }
 
-/* Timer glows GREEN when green team is winning */
-#timer.winning-green {
-  border-color: rgba(0, 255, 140, 0.85);
-  box-shadow: 0 0 18px rgba(0,255,130,0.65), 0 0 40px rgba(0,255,130,0.25), 0 2px 6px rgba(0,0,0,0.6);
-  text-shadow: 0 0 12px rgba(0,255,160,0.95);
-}
-
-/* Timer glows PURPLE when purple team is winning */
+/* Remove glow from timer winning states — bar handles that */
+#timer.winning-green,
 #timer.winning-purple {
-  border-color: rgba(190, 100, 255, 0.85);
-  box-shadow: 0 0 18px rgba(180,90,255,0.65), 0 0 40px rgba(180,90,255,0.25), 0 2px 6px rgba(0,0,0,0.6);
-  text-shadow: 0 0 12px rgba(210,160,255,0.95);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: none;
+  text-shadow: none;
 }
+
 
 /* Crown appears above the winning team side */
 .team-side {
