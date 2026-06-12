@@ -884,14 +884,36 @@ class Ghost {
       ctx.fillText(this.hat, 0, -GHOST_RADIUS - 8);
     }
 
-    // Player indicator ring
+    // Player indicator — pulsing double ring
     if (this.isPlayer) {
-      ctx.strokeStyle = "#ffffff";
-      ctx.lineWidth = 2;
+      const ringColor = this.team === 'green' ? '0,255,160' : '210,140,255';
+      const pulse1 = Math.sin(now * 0.004);                    // inner ring breathes in
+      const pulse2 = Math.sin(now * 0.004 + Math.PI);          // outer ring breathes out (opposite phase)
+      const innerR = GHOST_RADIUS + 5 + pulse1 * 2.5;
+      const outerR = GHOST_RADIUS + 11 + pulse2 * 3;
+      const innerAlpha = 0.55 + 0.35 * ((pulse1 + 1) / 2);
+      const outerAlpha = 0.25 + 0.2  * ((pulse2 + 1) / 2);
+
+      // Outer ring (softer, wider glow)
+      ctx.strokeStyle = `rgba(${ringColor}, ${outerAlpha})`;
+      ctx.lineWidth = 2.5;
+      ctx.shadowColor = `rgba(${ringColor}, 0.6)`;
+      ctx.shadowBlur = 10;
       ctx.beginPath();
-      ctx.arc(0, 0, GHOST_RADIUS + 6, 0, Math.PI * 2);
+      ctx.arc(0, 0, outerR, 0, Math.PI * 2);
       ctx.stroke();
+
+      // Inner ring (brighter, tighter)
+      ctx.strokeStyle = `rgba(${ringColor}, ${innerAlpha})`;
+      ctx.lineWidth = 1.8;
+      ctx.shadowBlur = 6;
+      ctx.beginPath();
+      ctx.arc(0, 0, innerR, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.shadowBlur = 0;
     }
+
 
     // Power-up indicators
     if (performance.now() < this.speedBoostUntil) {
