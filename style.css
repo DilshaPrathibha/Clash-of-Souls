@@ -230,7 +230,43 @@ body {
   margin: 0 auto;
 }
 
+/* =====================
+   FINAL COUNTDOWN OVERLAY
+   ===================== */
+#final-countdown {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+  pointer-events: none;
+}
+
+#final-countdown.hidden {
+  display: none;
+}
+
+#countdown-number {
+  font-size: clamp(160px, 22vw, 260px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  /* color set dynamically by JS */
+  filter: drop-shadow(0 0 60px currentColor);
+  animation: countdownPop 1s ease-out forwards;
+}
+
+/* Pop in instantly, hold, then fade + scale up over last 0.5s */
+@keyframes countdownPop {
+  0%   { opacity: 1;   transform: scale(0.7); }
+  10%  { opacity: 1;   transform: scale(1);   }
+  50%  { opacity: 1;   transform: scale(1);   }
+  100% { opacity: 0;   transform: scale(1.1); }
+}
+
 /* Game over overlay enhancements */
+
 #overlay {
   position: fixed;
   inset: 0;

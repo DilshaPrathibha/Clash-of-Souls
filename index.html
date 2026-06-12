@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Great Ghoul Duel – Enhanced Edition</title>
+  <title>Clash of Souls</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="ui">
-    <div id="scoreboard">
 
-      <!-- Green side -->
+    <!-- Tug-of-war scorebar -->
+    <div id="scoreboard">
       <div class="team-side team-side-green">
         <span class="side-icon">👻</span>
         <span class="side-score" id="scoreGreen">0</span>
         <span class="side-pct" id="pctGreen">50%</span>
       </div>
 
-      <!-- Tug-of-war bar -->
       <div id="bar-wrap">
         <div id="tug-bar">
           <div id="bar-green"></div>
@@ -24,20 +23,18 @@
         </div>
       </div>
 
-      <!-- Purple side -->
       <div class="team-side team-side-purple">
         <span class="side-pct" id="pctPurple">50%</span>
         <span class="side-score" id="scorePurple">0</span>
         <span class="side-icon">👻</span>
       </div>
-
     </div>
 
+    <!-- Timer below bar -->
     <div id="timer-row"><span id="timer">02:00</span></div>
-    
+
     <div id="game-info">
       <div id="map-indicator">
-        <span class="map-dot">🗺️</span>
         <span id="current-map">Classic Graveyard</span>
         <button id="map-switch" class="small-btn">Switch Map</button>
       </div>
@@ -45,14 +42,19 @@
         <div id="active-powerups"></div>
       </div>
     </div>
-    
+
     <div id="hint">
-      Move with <b>Arrow keys</b>. Collect spirit flames and bring them to your base. 
+      Move with <b>Arrow keys</b>. Collect spirit flames and bring them to your base.
       <br>Steal enemy tails! Collect power-ups for special abilities!
     </div>
   </div>
 
   <canvas id="gameCanvas"></canvas>
+
+  <!-- Final countdown overlay -->
+  <div id="final-countdown" class="hidden">
+    <span id="countdown-number"></span>
+  </div>
 
   <div id="overlay" class="hidden">
     <div id="overlayContent">
@@ -66,6 +68,7 @@
       <button id="characterBtn">Customize</button>
     </div>
   </div>
+
 
   <div id="character-selection" class="hidden">
     <div id="character-panel">

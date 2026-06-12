@@ -77,6 +77,8 @@ let powerups = [];
 let startTime = 0;
 let gameOver = false;
 let currentMap = 0;
+let lastCountdownNum = -1;
+
 
 // Achievement and progression tracking
 let playerStats = {
@@ -1070,7 +1072,11 @@ function initGame() {
   particles = [];
   powerups = [];
   gameOver = false;
+  lastCountdownNum = -1;
+  document.getElementById('final-countdown').classList.add('hidden');
+  document.getElementById('timer-row').style.visibility = 'visible';
   overlay.classList.add("hidden");
+
   
   // Initialize maps if not already done
   if (maps.length === 0) {
@@ -1284,7 +1290,43 @@ function update() {
     const remSec = Math.floor(remaining / 1000);
     const mm = String(Math.floor(remSec / 60)).padStart(2, "0");
     const ss = String(remSec % 60).padStart(2, "0");
-    timerEl.textContent = `${mm}:${ss}`;
+
+    if (remaining > 6000) {
+      // Normal timer display
+      timerEl.textContent = `${mm}:${ss}`;
+      document.getElementById('timer-row').style.visibility = 'visible';
+      document.getElementById('final-countdown').classList.add('hidden');
+      lastCountdownNum = -1;
+    } else {
+      // Hide the timer pill
+      document.getElementById('timer-row').style.visibility = 'hidden';
+
+      // Which number should be showing right now? (5 down to 1, then done)
+      const countNum = Math.min(5, remSec); // 5,4,3,2,1 (0 = game ends)
+      if (countNum >= 1 && countNum !== lastCountdownNum) {
+        lastCountdownNum = countNum;
+
+        // Determine winning color
+        const gScore = ghosts.filter(g => g.team === 'green').reduce((s,g) => s+g.score, 0);
+        const pScore = ghosts.filter(g => g.team === 'purple').reduce((s,g) => s+g.score, 0);
+        const winColor = gScore >= pScore ? '#00ff99' : '#c06aff';
+
+        const overlay = document.getElementById('final-countdown');
+        overlay.classList.remove('hidden');
+
+        // Restart animation by replacing the element
+        const old = document.getElementById('countdown-number');
+        const fresh = old.cloneNode(false);
+        fresh.textContent = countNum;
+        fresh.style.color = winColor;
+        old.replaceWith(fresh);
+      }
+
+      if (countNum < 1) {
+        document.getElementById('final-countdown').classList.add('hidden');
+      }
+    }
+
 
     if (remaining <= 0) {
       endGame();
