@@ -8,19 +8,37 @@
 <body>
   <div id="ui">
     <div id="scoreboard">
-      <div class="team team-green">
-        <span class="team-icon">👻</span>
-        Green Team: <span id="scoreGreen">0</span>
+
+      <!-- Green side -->
+      <div class="team-side team-side-green">
+        <span class="side-icon">👻</span>
+        <span class="side-score" id="scoreGreen">0</span>
+        <span class="side-pct" id="pctGreen">50%</span>
       </div>
-      <div id="timer">02:00</div>
-      <div class="team team-purple">
-        <span class="team-icon">👻</span>
-        Purple Team: <span id="scorePurple">0</span>
+
+      <!-- Tug-of-war bar + timer -->
+      <div id="bar-wrap">
+        <div id="tug-bar">
+          <div id="bar-green"></div>
+          <div id="bar-divider">
+            <span id="timer">02:00</span>
+          </div>
+          <div id="bar-purple"></div>
+        </div>
       </div>
+
+      <!-- Purple side -->
+      <div class="team-side team-side-purple">
+        <span class="side-pct" id="pctPurple">50%</span>
+        <span class="side-score" id="scorePurple">0</span>
+        <span class="side-icon">👻</span>
+      </div>
+
     </div>
     
     <div id="game-info">
       <div id="map-indicator">
+        <span class="map-dot">🗺️</span>
         <span id="current-map">Classic Graveyard</span>
         <button id="map-switch" class="small-btn">Switch Map</button>
       </div>

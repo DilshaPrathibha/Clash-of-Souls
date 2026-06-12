@@ -25,54 +25,106 @@ body {
   pointer-events: none;
 }
 
+
+/* =====================
+   TOP BAR — TUG OF WAR BAR
+   ===================== */
 #scoreboard {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  max-width: 700px;
+  gap: 10px;
+  max-width: 860px;
   margin: 0 auto 8px;
-  padding: 8px 16px;
-  background: rgba(0, 0, 0, 0.75);
-  border-radius: 999px;
-  backdrop-filter: blur(16px);
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 12px;
 }
 
-.team {
+/* Team side labels */
+.team-side {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 4px 12px;
+  gap: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.side-icon { font-size: 18px; }
+
+.side-score {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.side-pct {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.75;
+}
+
+.team-side-green .side-score { color: #5bffb8; text-shadow: 0 0 8px rgba(0,255,160,0.7); }
+.team-side-purple .side-score { color: #c89eff; text-shadow: 0 0 8px rgba(180,120,255,0.7); }
+.team-side-green .side-pct { color: #5bffb8; }
+.team-side-purple .side-pct { color: #c89eff; }
+
+/* Bar wrapper grows to fill remaining space */
+#bar-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+/* The pill bar track */
+#tug-bar {
+  display: flex;
+  align-items: center;
+  height: 28px;
   border-radius: 999px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.55);
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07);
+  position: relative;
 }
 
-.team-icon {
-  font-size: 16px;
+/* Green fill — grows from left */
+#bar-green {
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(90deg, #00c872, #00ff99);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.team-green {
-  background: radial-gradient(circle at top, rgba(0, 255, 140, 0.4), rgba(0, 140, 80, 0.2));
-  border: 1px solid rgba(0, 255, 120, 0.7);
-  box-shadow: 0 0 15px rgba(0, 255, 120, 0.3);
+/* Purple fill — grows from right */
+#bar-purple {
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(270deg, #7b2fff, #b06aff);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.team-purple {
-  background: radial-gradient(circle at top, rgba(210, 150, 255, 0.4), rgba(120, 80, 200, 0.2));
-  border: 1px solid rgba(210, 150, 255, 0.7);
-  box-shadow: 0 0 15px rgba(210, 150, 255, 0.3);
+/* Center divider with the timer */
+#bar-divider {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: linear-gradient(180deg, #2a1154 0%, #120830 100%);
+  border: 2px solid rgba(160,110,255,0.7);
+  border-radius: 999px;
+  padding: 2px 14px;
+  box-shadow: 0 0 14px rgba(140,90,255,0.6), 0 2px 6px rgba(0,0,0,0.6);
+  pointer-events: none;
 }
 
 #timer {
-  font-weight: 700;
-  font-size: 16px;
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(200,160,255,0.9);
+  display: block;
+  line-height: 1;
 }
 
 #game-info {

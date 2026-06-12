@@ -1348,6 +1348,16 @@ function update() {
   scoreGreenEl.textContent = greenScore;
   scorePurpleEl.textContent = purpleScore;
 
+  // Update tug-of-war bar
+  const totalScore = greenScore + purpleScore;
+  const greenPct = totalScore > 0 ? (greenScore / totalScore) * 100 : 50;
+  const purplePct = 100 - greenPct;
+  document.getElementById('bar-green').style.width = greenPct + '%';
+  document.getElementById('bar-purple').style.width = purplePct + '%';
+  document.getElementById('pctGreen').textContent = Math.round(greenPct) + '%';
+  document.getElementById('pctPurple').textContent = Math.round(purplePct) + '%';
+
+
   // Enhanced particles
   for (const p of particles) {
     p.update(dt);
